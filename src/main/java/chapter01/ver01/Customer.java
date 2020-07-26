@@ -27,7 +27,7 @@ public class Customer {
 		while (rentals.hasMoreElements()) {
 			Rental each = (Rental) rentals.nextElement(); // 取得一笔租借记。
 			// determine amounts for each line
-			double thisAmount = amountFor(each);
+			double thisAmount = each.getCharge();
 			// add frequent renter points （累计常客积点。
 			frequentRenterPoints++;
 			// add bonus for a two day new release rental
@@ -46,23 +46,4 @@ public class Customer {
 		return result;
 	}
 
-	private double amountFor(Rental aRental) {
-		double result =0 ;
-		switch (aRental.getMovie().getPriceCode()) { // 取得影片出租价格
-		case Movie.REGULAR: // 普通片
-			result += 2;
-			if (aRental.getDaysRented() > 2)
-				result += (aRental.getDaysRented() - 2) * 1.5;
-			break;
-		case Movie.NEW_RELEASE: // 新片
-			result += aRental.getDaysRented() * 3;
-			break;
-		case Movie.CHILDRENS: // 儿童。
-			result += 1.5;
-			if (aRental.getDaysRented() > 3)
-				result += (aRental.getDaysRented() - 3) * 1.5;
-			break;
-		}
-		return result;
-	}
 }
