@@ -2,6 +2,8 @@
 
 # Custom
 target/
+.settings/
+test-output/
 ### Java template
 # Compiled class file
 
@@ -104,3 +106,6 @@ fabric.properties
 .idea/modules.xml
 .idea/vcs.xml
 refactoring.iml
+.classpath
+.project
+
